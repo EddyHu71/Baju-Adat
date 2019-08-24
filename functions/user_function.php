@@ -37,12 +37,12 @@
 			echo "Register gagal";
 		} else {
 			$tambah = array(
-			$name_register => 'name_user',
-			$user_register => 'username_user',
-			$pass_register => 'password_user',
-			$email_register => 'email_user',
-			$phone_register => 'phone_user',
-			$photo_register => 'photo_user'
+				$name_register => 'name_user',
+				$user_register => 'username_user',
+				$pass_register => 'password_user',
+				$email_register => 'email_user',
+				$phone_register => 'phone_user',
+				$photo_register => 'photo_user'
 			);
 			
 			$db->insert("table_user", $tambah);
