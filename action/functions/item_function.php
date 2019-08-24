@@ -5,42 +5,48 @@
 	
 	$crud = new Crud();
 	
-	if (isset($_POST['user_login'])) {
-		$name_login = $_POST[''];
-		$user_login = $_POST[''];
-		$pass_login = $_POST[''];
-		$crud->fetchwhere("table_user", "'$user_login' = username_user AND '$pass_login' = password_user");
-		if ($crud) {
-			echo "Anda berhasil login";
-		} else {
-			echo "Anda gagal login";
-		}
-	}
-	
-	if (isset($_POST['user_register'])) {
-		$name_register = $_POST[''];
-		$user_register = $_POST[''];
-		$email_register = $_POST[''];
-		$pass_register = $_POST[''];
-		$phone_register = $_POST[''];
+	if (isset($_POST['item_add'])) {
+		$kode_item_register = $_POST['kode_barang_add'];
+		$name_item_register = $_POST['nama_barang_add'];
+		$desc_item_register = $_POST['desc_barang_add'];
+		$price_item_register = $_POST['size_barang_add'];
+		//$size_item_register = $_POST[''];
 		$files = $_FILES['image']['tmp_name'];
+		$photo_item_register = addslashes($_FILES['photo']['name']);
 		$image_check = getimagesize($_FILES['image']['tmp_name']);
-		
-		$crud->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
-		if ($crud) {
-			echo "Register gagal";
+		if ($image_check == null) {
+			echo "Image invalid";
 		} else {
-			echo "Register sukses";
+		
 		}
+		
+		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
+		
+		$crud->fetchwhere("table_barang", "'$kode_item_register' = kode_barang");
+		
+		if ($crud) {
+			echo "Tambah Produk gagal";
+		} else {
+			$tambah = [
+			$name_item_register => 'name',
+			$desc_item_register => '',
+			$price_item_register => '',
+			//$size_item_register => '',
+			$photo_item_register => ''
+			];
+			
+			$crud->insert("table_register", $tambah);
+			
+		}
+		header("location:login.php");
 	}
 	
-	if (isset($_POST['user_update'])) {
-		$name_update = $_POST[''];
-		$user_update = $_POST[''];
-		$email_update = $_POST[''];
-		$pass_update = $_POST[''];
-		$phone_update = $_POST[''];
-		$photo_update = "";
+	if (isset($_POST['item_update'])) {
+		$name_item_update = $_POST['nama_barang_update'];
+		$desc_item_update = $_POST['desc_barang_update'];
+		$price_item_update = $_POST['price_barang_update'];
+		$size_item_update = $_POST['size_barang_update'];
+		$photo_item_update = "";
 		
 		$crud->update("table_user", "'$'");
 	}
