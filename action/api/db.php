@@ -8,5 +8,5 @@
                 echo "Error in Connecting ".mysqli_connect_error();
             }
         }
-    }
+    } 
 ?>
