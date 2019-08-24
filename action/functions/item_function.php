@@ -22,9 +22,9 @@
 		
 		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		
-		$crud->fetchwhere("table_barang", "'$kode_item_register' = kode_barang");
+		$query = $crud->fetchwhere("table_barang", "'$kode_item_register' = kode_barang");
 		
-		if ($crud) {
+		if ($query) {
 			echo "Tambah Produk gagal";
 		} else {
 			$tambah = [
@@ -38,7 +38,7 @@
 			$crud->insert("table_register", $tambah);
 			
 		}
-		header("location:login.php");
+		header("location:barang.php");
 	}
 	
 	if (isset($_POST['item_update'])) {
@@ -48,8 +48,26 @@
 		$size_item_update = $_POST['size_barang_update'];
 		$photo_item_update = "";
 		
-		$crud->update("table_user", "'$'");
+		$query = $crud->update("table_barang", "'$'");
+		
+		if ($query) {
+		
+		} else {
+		
+		}
 	}
 	
-	
+	if (ISSET($_POST['item_delete'])) {
+		$name_item_delete = $_POST[''];
+		$desc_item_delete = $_POST[''];
+		$price_item_delete = $_POST[''];
+		$size_item_delete = $_POST[''];
+		
+		$query = $crud->delete("table_barang", "");
+		if ($query) {
+		
+		} else {
+		
+		}
+	}
 ?>

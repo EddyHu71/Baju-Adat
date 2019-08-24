@@ -9,8 +9,8 @@
 		$name_login = $_POST[''];
 		$user_login = $_POST[''];
 		$pass_login = $_POST[''];
-		$crud->fetchwhere("table_user", "'$user_login' = username_user AND '$pass_login' = password_user");
-		if ($crud) {
+		$query = $crud->fetchwhere("table_user", "'$user_login' = username_user AND '$pass_login' = password_user");
+		if ($query) {
 			echo "Anda berhasil login";
 		} else {
 			echo "Anda gagal login";
@@ -34,9 +34,9 @@
 		
 		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		
-		$crud->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
+		$query = $crud->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
 		
-		if ($crud) {
+		if ($query) {
 			echo "Register gagal";
 		} else {
 			$tambah = [
@@ -62,7 +62,12 @@
 		$phone_update = $_POST[''];
 		$photo_update = "";
 		
-		$crud->update("table_user", "'$'");
+		$query = $crud->update("table_user", "'$'");
+		if ($query) {
+		
+		} else {
+		
+		}
 	}
 	
 	
