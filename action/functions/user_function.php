@@ -5,7 +5,7 @@
 	
 	$crud = new Crud();
 	
-	if (isset($_POST['user_login'])) {
+	if (ISSET($_POST['user_login'])) {
 		$name_login = $_POST[''];
 		$user_login = $_POST[''];
 		$pass_login = $_POST[''];
@@ -17,7 +17,7 @@
 		}
 	}
 	
-	if (isset($_POST['user_register'])) {
+	if (ISSET($_POST['user_register'])) {
 		$name_register = $_POST[''];
 		$user_register = $_POST[''];
 		$email_register = $_POST[''];
@@ -54,7 +54,7 @@
 		header("location:login.php");
 	}
 	
-	if (isset($_POST['user_update'])) {
+	if (ISSET($_POST['user_update'])) {
 		$name_update = $_POST[''];
 		$user_update = $_POST[''];
 		$email_update = $_POST[''];

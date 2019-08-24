@@ -5,7 +5,7 @@
 	
 	$crud = new Crud();
 	
-	if (isset($_POST['item_add'])) {
+	if (ISSET($_POST['item_add'])) {
 		$kode_item_register = $_POST['kode_barang_add'];
 		$name_item_register = $_POST['nama_barang_add'];
 		$desc_item_register = $_POST['desc_barang_add'];
@@ -41,7 +41,7 @@
 		header("location:barang.php");
 	}
 	
-	if (isset($_POST['item_update'])) {
+	if (ISSET($_POST['item_update'])) {
 		$name_item_update = $_POST['nama_barang_update'];
 		$desc_item_update = $_POST['desc_barang_update'];
 		$price_item_update = $_POST['price_barang_update'];
