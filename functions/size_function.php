@@ -1,7 +1,7 @@
 <?php
-	include "api/action.php";
-	include "api/db.php";
-	include "api/my_function.php";
+	include "action/api/action.php";
+	include "action/api/db.php";
+	include "action/api/my_function.php";
 	
 	$crud = new Crud();
 	
@@ -10,6 +10,8 @@
 		$minimun_ukuran = $_POST['minimun_ukuran_add'];
 		$maksimun_ukuran = $_POST['maksimun_ukuran_add'];
 		
+	}
+	
 	$query = $crud->insert("table_ukuran_baju", "");
 	
 	if ($query) {

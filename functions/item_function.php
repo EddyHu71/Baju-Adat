@@ -1,7 +1,7 @@
 <?php
-	include "api/action.php";
-	include "api/db.php";
-	include "api/my_function.php";
+	include "action/api/action.php";
+	include "action/api/db.php";
+	include "action/api/my_function.php";
 	
 	$crud = new Crud();
 	
@@ -58,10 +58,11 @@
 	}
 	
 	if (ISSET($_POST['item_delete'])) {
-		$name_item_delete = $_POST[''];
-		$desc_item_delete = $_POST[''];
-		$price_item_delete = $_POST[''];
-		$size_item_delete = $_POST[''];
+		$name_item_delete = $_POST['nama_barang_delete'];
+		$desc_item_delete = $_POST['desc_barang_delete'];
+		$price_item_delete = $_POST['price_barang_delete'];
+		$size_item_delete = $_POST['size_barang_delete'];
+		
 		
 		$query = $crud->delete("table_barang", "");
 		if ($query) {
