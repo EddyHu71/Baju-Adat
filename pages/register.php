@@ -8,6 +8,9 @@
 </head>
 
 <body>
+	<?php
+		include "../includes/tabbar.php";
+	?>
   <div class="form-group">
 
 	<div class="col-md-4">
