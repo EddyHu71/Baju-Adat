@@ -1,11 +1,13 @@
 <HTML>
+<head>
+	<title>Register your account</title>
 <?php
-	include "../includes/library.php";
+	include "library.php";
 ?>
+</head>
 
 <body>
   <div class="container">
-  
     <p>Please fill in this form to create an account.</p>
     <hr>
     <input type="text" placeholder="Enter Name" name="name_register" required>
@@ -28,5 +30,9 @@
       <button type="submit" class="signupbtn">Sign Up</button>
     </div>
   </div>
+  
+  <?php
+	include "libraryjs.php";
+  ?>
 </body>
 </HTML>

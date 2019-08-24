@@ -1,7 +1,10 @@
 <HTML>
+<head>
+	<title>Login</title>
 <?php
-	include "../includes/library.php";
+	include "library.php";
 ?>
+</head>
 
 <body>
 	<div class="imgcontainer">
@@ -25,5 +28,9 @@
 		<button type="button" class="cancelbtn">Cancel</button>
 		<span class="psw">Forgot <a href="#">password?</a></span>
 	  </div>
+	  
+	  <?php
+		include "libraryjs.php";
+	  ?>
 </body>
 </HTML>
