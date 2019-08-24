@@ -1,9 +1,7 @@
 <?php
-	include "action/api/action.php";
-	include "action/api/db.php";
-	include "action/api/my_function.php";
+	include "../action/action.php";
 	
-	$crud = new Crud();
+	$db = new Crud();
 	
 	if (ISSET($_POST['item_add'])) {
 		$kode_item_register = $_POST['kode_barang_add'];
@@ -22,7 +20,7 @@
 		
 		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		
-		$query = $crud->fetchwhere("table_barang", "'$kode_item_register' = kode_barang");
+		$query = $db->fetchwhere("table_barang", "'$kode_item_register' = kode_barang");
 		
 		if ($query) {
 			echo "Tambah Produk gagal";
@@ -35,7 +33,7 @@
 			$photo_item_register => ''
 			];
 			
-			$crud->insert("table_register", $tambah);
+			$db->insert("table_register", $tambah);
 			
 		}
 		header("location:barang.php");
@@ -48,7 +46,7 @@
 		$size_item_update = $_POST['size_barang_update'];
 		$photo_item_update = "";
 		
-		$query = $crud->update("table_barang", "'$'");
+		$query = $db->update("table_barang", "'$'");
 		
 		if ($query) {
 		
@@ -64,7 +62,7 @@
 		$size_item_delete = $_POST['size_barang_delete'];
 		
 		
-		$query = $crud->delete("table_barang", "");
+		$query = $db->delete("table_barang", "");
 		if ($query) {
 		
 		} else {

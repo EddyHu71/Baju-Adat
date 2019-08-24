@@ -1,9 +1,11 @@
 <HTML>
 <head>
 	<title>Login</title>
-<?php
-	include "library.php";
-?>
+	
+	<?php
+		include "library.php";
+		include "../functions/user_function.php";
+	?>
 </head>
 
 <body>
@@ -12,13 +14,11 @@
 	</div>
 
 	  <div class="container">
-		<label for="uname"><b>Username</b></label>
-		<input type="text" placeholder="Enter Username" name="uname" required>
+		<input type="text" placeholder="Enter Username" name="username_login" required>
 
-		<label for="psw"><b>Password</b></label>
-		<input type="password" placeholder="Enter Password" name="psw" required>
+		<input type="password" placeholder="Enter Password" name="password_login" required>
 
-		<button type="submit">Login</button>
+		<button type="submit" name="user_login">Login</button>
 		<label>
 		  <input type="checkbox" checked="checked" name="remember"> Remember me
 		</label>

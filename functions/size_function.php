@@ -1,9 +1,7 @@
 <?php
-	include "action/api/action.php";
-	include "action/api/db.php";
-	include "action/api/my_function.php";
+	include "../action/action.php";
 	
-	$crud = new Crud();
+	$db = new Crud();
 	
 	if (ISSET($_POST['size_add'])) {
 		$simbol_ukuran = $_POST['simbol_ukuran_add'];
@@ -12,7 +10,7 @@
 		
 	}
 	
-	$query = $crud->insert("table_ukuran_baju", "");
+	$query = $db->insert("table_ukuran_baju", "");
 	
 	if ($query) {
 		
@@ -25,12 +23,13 @@
 		$minimun_ukuran = $_POST['minimun_ukuran_update'];
 		$maksimun_ukuran = $_POST['maksimun_ukuran_update'];
 		
-	$query = $crud->update("table_ukuran_baju", "");
+	$query = $db->update("table_ukuran_baju", "");
 	
-	if ($query) {
+		if ($query) {
+			
+		} else {
 		
-	} else {
-	
+		}
 	}
 	
 	if (ISSET($_POST['size_delete'])) {
@@ -38,12 +37,12 @@
 		$minimun_ukuran = $_POST['minimun_ukuran_delete'];
 		$maksimun_ukuran = $_POST['maksimun_ukuran_delete'];
 		
-	$query = $crud->delete("table_ukuran_baju", "");
+	$query = $db->delete("table_ukuran_baju", "");
 	
-	if ($query) {
+		if ($query) {
+			
+		} else {
 		
-	} else {
-	
-	}
+		}
 	}
 ?>

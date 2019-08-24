@@ -1,15 +1,12 @@
  <?php
-	include "action/api/action.php";
-	include "action/api/db.php";
-	include "action/api/my_function.php";
+	include "../action/action.php";
 	
-	$crud = new Crud();
+	$db = new Crud();
 	
 	if (ISSET($_POST['user_login'])) {
-		$name_login = $_POST[''];
-		$user_login = $_POST[''];
-		$pass_login = $_POST[''];
-		$query = $crud->fetchwhere("table_user", "'$user_login' = username_user AND '$pass_login' = password_user");
+		$user_login = $_POST['username_login'];
+		$pass_login = $_POST['password_login'];
+		$query = $db->fetchwhere("table_user", "'$user_login' = username_user AND '$pass_login' = password_user");
 		if ($query) {
 			echo "Anda berhasil login";
 		} else {
@@ -18,23 +15,23 @@
 	}
 	
 	if (ISSET($_POST['user_register'])) {
-		$name_register = $_POST[''];
-		$user_register = $_POST[''];
-		$email_register = $_POST[''];
-		$pass_register = $_POST[''];
-		$phone_register = $_POST[''];
+		$name_register = $_POST['name_register'];
+		$user_register = $_POST['username_register'];
+		$email_register = $_POST['email_register'];
+		$pass_register = $_POST['pass_register'];
+		$phone_register = $_POST['phone_register'];
 		$files = $_FILES['image']['tmp_name'];
 		$photo_register = addslashes($_FILES['photo']['name']);
 		$image_check = getimagesize($_FILES['image']['tmp_name']);
 		if ($image_check == null) {
 			echo "Image invalid";
 		} else {
-					move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
+			move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		}
 		
 		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		
-		$query = $crud->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
+		$query = $db->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
 		
 	if ($query) {
 			echo "Register gagal";
@@ -48,7 +45,7 @@
 			$photo_register => 'photo_user'
 			);
 			
-			$crud->insert("table_user", $tambah);
+			$db->insert("table_user", $tambah);
 			
 		}
 		header("location:register.php");
@@ -62,7 +59,7 @@
 		$phone_update = $_POST[''];
 		$photo_update = "";
 		
-		$query = $crud->update("table_user", "'$'");
+		$query = $db->update("table_user", "'$'");
 	
 	if ($query) {
 		
