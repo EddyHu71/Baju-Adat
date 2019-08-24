@@ -1,34 +1,40 @@
 <HTML>
 <head>
 	<title>Login</title>
-	
 	<?php
 		include "library.php";
 		include "../functions/user_function.php";
 	?>
+	
 </head>
-
 <body>
-	<div class="imgcontainer">
-		<img src="img_avatar2.png" alt="Avatar" class="avatar">
+	<?php
+		include "../includes/tabbar.php";
+	?>
+	
+	<div class="col-md-6 container">
+		<form method="POST">
+			<div width="500px" height="500px">
+				<img src="logo_budat.png" alt="Avatar" class="avatar">
+			</div>
+				<div class="container">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Enter Username" name="user_login" required>
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Enter Password" name="pass_login" required>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary form-control" name="user_register">Login</button>
+					</div>
+				</div>
+
+		  <div class="container" style="background-color:#f1f1f1">
+			<span class="psw">Forgot <a href="#">password?</a></span>
+		  </div>
+		</form>
 	</div>
-
-	  <div class="container">
-		<input type="text" placeholder="Enter Username" name="username_login" required>
-
-		<input type="password" placeholder="Enter Password" name="password_login" required>
-
-		<button type="submit" name="user_login">Login</button>
-		<label>
-		  <input type="checkbox" checked="checked" name="remember"> Remember me
-		</label>
-	  </div>
-
-	  <div class="container" style="background-color:#f1f1f1">
-		<button type="button" class="cancelbtn">Cancel</button>
-		<span class="psw">Forgot <a href="#">password?</a></span>
-	  </div>
-	  
+	
 	  <?php
 		include "libraryjs.php";
 	  ?>
