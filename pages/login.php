@@ -13,7 +13,7 @@
 	?>
 	
 	<div class="col-md-6 container">
-		<form method="POST">
+		<form method="POST" enctype = "multipart/form-data">
 			<div width="500px" height="500px">
 				<img src="logo_budat.png" alt="Avatar" class="avatar">
 			</div>

@@ -3,7 +3,6 @@
 	<title>Register your account</title>
 	<?php
 		include "library.php";
-		include "../functions/user_function.php";
 	?>
 </head>
 
@@ -12,14 +11,44 @@
 		include "../includes/tabbar.php";
 	?>
 
-	<form method="POST">
+	<?php 
+	
+		function  requesturl($url1){
+		// persiapkan curl
+		$ch = curl_init(); 
+
+		// set url 
+		curl_setopt($ch, CURLOPT_URL, $url1);
+
+		// return the transfer as a string 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+		// $output contains the output string 
+		$output = curl_exec($ch); 
+
+		// tutup curl 
+		curl_close($ch);      
+
+		// menampilkan hasil curl
+		echo $output;
+		}
+		
+		$url = "https://api.thebigbox.id/sms-notification/1.0.0/messages/15160580393/status";
+		$response = requesturl(json_decode($url));
+		echo $response['code'];
+		print_r($response);
+		var_dump($response);
+
+	?>
+	<form method="POST" enctype = "multipart/form-data" action="../functions/user_function.php">
 		<div class="col-md-4">
-			<div class="form-group">
-			<div id = "preview" style = "width:250px; height :250px; border:1px solid #000;">
-				<center id = "lbl">Photo</center>
-			</div>
-				<input type = "file" class="form-control-file" required = "required" name = "photo_testimonial" />
-			</div>
+			<div class = "form-group">
+				<label>Photo </label>
+				<div id = "preview" style = "width:250px; height :250px; border:1px solid #000;">
+					<center id = "lbl">[Photo]</center>
+				</div>
+				<input type = "file" required = "required" id = "photo" name = "photo" />
+			</div>	
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Enter Name" name="name_register" required>
 			</div>
@@ -48,31 +77,31 @@
 			</div>
 		</div>
 	</form>
-  
+	<?php require_once '../functions/user_function.php'?>
   <?php
 	include "libraryjs.php";
   ?>
-	<script type = "text/javascript">
-		$(document).ready(function(){
-			$pic = $('<img id = "image" width = "100%" height = "100%"/>');
-			$lbl = $('<center id = "lbl">[Photo]</center>');
-			$("#photo").change(function(){
-				$("#lbl").remove();
-				var files = !!this.files ? this.files : [];
-				if(!files.length || !window.FileReader){
-					$("#image").remove();
-					$lbl.appendTo("#preview");
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$pic = $('<img id = "image" width = "100%" height = "100%"/>');
+		$lbl = $('<center id = "lbl">[Photo]</center>');
+		$("#photo").change(function(){
+			$("#lbl").remove();
+			var files = !!this.files ? this.files : [];
+			if(!files.length || !window.FileReader){
+				$("#image").remove();
+				$lbl.appendTo("#preview");
+			}
+			if(/^image/.test(files[0].type)){
+				var reader = new FileReader();
+				reader.readAsDataURL(files[0]);
+				reader.onloadend = function(){
+					$pic.appendTo("#preview");
+					$("#image").attr("src", this.result);
 				}
-				if(/^image/.test(files[0].type)){
-					var reader = new FileReader();
-					reader.readAsDataURL(files[0]);
-					reader.onloadend = function(){
-						$pic.appendTo("#preview");
-						$("#image").attr("src", this.result);
-					}
-				}
-			});
+			}
 		});
-	</script>
+	});
+</script>
 </body>
 </HTML>

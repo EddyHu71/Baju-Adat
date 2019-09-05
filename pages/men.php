@@ -12,6 +12,6 @@
 	<?php
 		include "../includes/tabbar.php";
 	?>
+	
 </body>
-</HTML>
 </HTML>

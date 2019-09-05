@@ -20,16 +20,11 @@
 		$email_register = $_POST['email_register'];
 		$pass_register = $_POST['pass_register'];
 		$phone_register = $_POST['phone_register'];
-		$files = $_FILES['image']['tmp_name'];
+		$files = $_FILES['photo']['tmp_name'];
 		$photo_register = addslashes($_FILES['photo']['name']);
-		$image_check = getimagesize($_FILES['image']['tmp_name']);
-		if ($image_check == null) {
-			echo "Image invalid";
-		} else {
-			move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
-		}
-		
+		$image_check = getimagesize($_FILES['photo']['tmp_name']);
 		move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
+		//move_uploaded_file($_FILES['photo']['tmp_name'],"../users/" . $_FILES['photo']['name']);
 		
 		$query = $db->fetchwhere("table_user", "'$user_register' = username_user AND '$email_register' = email_user");
 		
@@ -37,12 +32,12 @@
 			echo "Register gagal";
 		} else {
 			$tambah = array(
-				$name_register => 'name_user',
-				$user_register => 'username_user',
-				$pass_register => 'password_user',
-				$email_register => 'email_user',
-				$phone_register => 'phone_user',
-				$photo_register => 'photo_user'
+				"'$name_register' => 'name_user'",
+				"'$user_register' => 'username_user'",
+				"'$pass_register' => 'password_user'",
+				"'$email_register' => 'email_user'",
+				"'$phone_register' => 'phone_user'",
+				"'$photo_register' => 'photo_user'"
 			);
 			
 			$db->insert("table_user", $tambah);
